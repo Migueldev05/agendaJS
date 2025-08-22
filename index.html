@@ -6,17 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda</title>
 
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <h1>Agenda de tarefas</h1>
+    
     <p>
-        <input id="tarefa" type="text" placeholder="Insira aqui sua tarefa"></input>
+        <input id="tarefa" type="text" placeholder="Adicione a sua tarefa"></input>
+        <br>
         <input id="data" type="date" placeholder="Insira a data da tarefa"></input>
     </p>
     <p>
         <button id="enviar" onclick="adicionarTarefa()">Adicionar Tarefa</button>
     </p>
     <div id="lista-de-tarefas"></div>
+    
     <script>
 
         //Seção de modelagem (de dados)
@@ -95,7 +100,7 @@
                 
                 afazeres.forEach((tarefa) => {
                     const elemento = document.createElement("div");
-                    elemento.innerHTML = "<ul>" + "<li>" + tarefa.nome + " - " + tarefa.data + "</li>" + "</ul>";
+                    elemento.innerHTML = "<ul>" + tarefa.nome + " - " + tarefa.data + "</ul>"
 
                     const botaoApagar = document.createElement("button");
                     botaoApagar.innerText = "Apagar Tarefa";
@@ -113,6 +118,17 @@
         renderizar();
         // Conversar com o professor sobre o fato de que a data está em inglês.
     </script>
+ <!-- Estrelas na lateral esquerda -->
+    <div class="estrela esquerda" style="top: 7%;">✨</div>
+    <div class="estrela esquerda" style="top: 35%;">✨</div>
+    <div class="estrela esquerda" style="top: 55%;">✨</div>
+    <div class="estrela esquerda" style="top: 90%;">✨</div>
+
+    <!-- Estrelas na lateral direita -->
+    <div class="estrela direita" style="top: 7%;">✨</div>
+    <div class="estrela direita" style="top: 35%;">✨</div>
+    <div class="estrela direita" style="top: 55%;">✨</div>
+    <div class="estrela direita" style="top: 90%;">✨</div>
 </body>
 
 </html>

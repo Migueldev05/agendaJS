@@ -1,0 +1,71 @@
+      body {
+            background-color: rgb(245, 245, 245);
+            text-align: center;
+            color: darkred;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: "Lucida Console", "Courier New", monospace;
+            border-left: 50px solid red;
+            border-right: 50px solid red;
+            height: auto; 
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: darkgoldenrod;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+
+        #enviar{
+            font-size: 0.95rem;
+            background-color: #ffe4e4;
+            color: darkred;
+            border-radius: 5px;
+            border-color: darkgoldenrod;
+            padding: 5px 15px;
+            border-style: solid;
+            margin-left: 1rem;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+
+        input[type="text"], select{
+            border-radius: 5px;
+            font-size: 1.5rem;
+            font-family: "Lucida Console", "Courier New", monospace;
+            background-color: #ffe4e4;
+            border-color: darkgoldenrod;
+            color:darkred;
+            margin-left: 1rem;
+        }
+
+        input[type="data"], select{
+            border-radius: 5px;
+            font-size: 1.5rem;
+            font-family: "Lucida Console", "Courier New", monospace;
+            border-color: darkblue;
+        }
+
+        button {
+            background-color: #ffe4e4;
+            border-radius: 5px;
+            color: darkred;
+            border-color: darkgoldenrod;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+
+         .estrela {
+            position: fixed;
+            font-size: 2rem;
+            color: pink;
+            animation: piscar 1.5s infinite alternate;
+            z-index: 1000;
+        }
+
+        .estrela.esquerda { left: 10px; top: 20%; }
+        .estrela.direita { right: 10px; top: 40%; }
+
+        @keyframes piscar {
+            0% { opacity: 0.2; transform: scale(0.9) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.1) rotate(20deg); }
+            100% { opacity: 0.2; transform: scale(0.9) rotate(-20deg); }
+        }
