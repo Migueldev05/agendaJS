@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+
+</head>
+
+<body>
+    <p>
+        <input id="tarefa" type="text" placeholder="Insira aqui sua tarefa"></input>
+        <input id="data" type="date" placeholder="Insira a data da tarefa"></input>
+    </p>
+    <p>
+        <button id="enviar" onclick="adicionarTarefa()">Adicionar Tarefa</button>
+    </p>
+    <div id="lista-de-tarefas"></div>
+    <script>
+
+        //Seção de modelagem (de dados)
+        let afazeres;
+        const afazeresSalvos = JSON.parse(localStorage.getItem("afazeres"));
+        if(Array.isArray(afazeresSalvos)){
+            afazeres = afazeresSalvos;
+        }else{
+
+            afazeres = [
+            {
+                nome: "Lavar a louça",
+                data: "15-08-25",
+                id: "id1"
+            },
+            {
+                nome: "Lavar o banheiro",
+                data: "20-08-25",
+                id: "id2"
+            },
+            {
+                nome: "Estender as roupas",
+                data: "25-08-25",
+                id: "id3"
+            },
+            {
+                nome: "Assistir jogo do Corinthians",
+                data: "16-08-25",
+                id: "id4"
+            },
+        ];
+        }
+        //salva as tarefas no navegador depois de converter um array em string
+        const salvarTarefas = () => localStorage.setItem("afazeres", JSON.stringify(afazeres));
+        salvarTarefas();
+
+        // Variáveis não são apenas números, strings, dados e booleanos, mas também "storages". Um "método" é uma função que pertence a um objeto.
+        
+        //adiciona as tarefas no navegador
+        const adicionarTarefa = () => {
+            const campoTarefa = document.getElementById("tarefa");
+            const tarefa = campoTarefa.value;
+
+            const campoData = document.getElementById("data");
+            const prazo = campoData.value;
+
+            const cron = "" + new Date().getTime();
+
+            afazeres.push(
+                {
+                    nome: tarefa,
+                    data: prazo,
+                    id: cron
+                }
+            )
+            salvarTarefas();
+            renderizar();
+        }
+
+        const apagarTarefa = (evento) => {
+            const botaoApagar = evento.target;
+            const idApagado = botaoApagar.id;
+            afazeres = afazeres.filter((tarefa) => {
+                if (tarefa.id === idApagado){
+                    return false;
+                } else {
+                    return true;
+                };
+            })
+            salvarTarefas();
+            renderizar();
+        };
+
+            const renderizar = () => {
+                document.getElementById("lista-de-tarefas").innerHTML = "";
+                
+                afazeres.forEach((tarefa) => {
+                    const elemento = document.createElement("div");
+                    elemento.innerHTML = "<ul>" + "<li>" + tarefa.nome + " - " + tarefa.data + "</li>" + "</ul>";
+
+                    const botaoApagar = document.createElement("button");
+                    botaoApagar.innerText = "Apagar Tarefa";
+                    botaoApagar.style = "margin-left: 12px;"
+                    botaoApagar.id = tarefa.id;
+                    botaoApagar.onclick = apagarTarefa;
+                    elemento.appendChild(botaoApagar);
+
+                    const listaDeTarefas = document.getElementById("lista-de-tarefas");
+                    listaDeTarefas.appendChild(elemento);
+                }
+                );
+            }
+        
+        renderizar();
+        // Conversar com o professor sobre o fato de que a data está em inglês.
+    </script>
+</body>
+
+</html>
